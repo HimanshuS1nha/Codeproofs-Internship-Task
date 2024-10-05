@@ -36,3 +36,5 @@ app.post("/api/add-email", async (req, res) => {
 connectToDB().then(() =>
   app.listen(port, () => console.log(`Listening at http://localhost:${port}`))
 );
+
+export default app;

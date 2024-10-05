@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import { config } from "dotenv";
 config();
 
@@ -8,10 +9,12 @@ import Users from "./models/UsersModel.js";
 const port = process.env.PORT || 8000;
 
 const app = express();
+app.use(cors({ origin: process.env.FRONTEND_URL }));
+app.use(express.json());
 
 app.get("/", (_, res) => res.send("Hello World"));
 
-app.post("/add-email", async (req, res) => {
+app.post("/api/add-email", async (req, res) => {
   try {
     const { email } = req.body;
 
